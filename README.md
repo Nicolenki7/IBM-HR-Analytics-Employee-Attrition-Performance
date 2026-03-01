@@ -1,83 +1,211 @@
-# 📊 IBM HR ANALYTICS: PREDICTIVE EMPLOYEE ATTRITION (CHURN) ANALYSIS
+# 👔 IBM HR Analytics — Employee Attrition & Performance
 
-## 🎯 Project Objective
-This Data Science and Business Intelligence project aims to **identify and quantify the primary risk factors driving voluntary employee attrition (Churn)** within a sample of the IBM HR Analytics dataset.
+**HR Analytics | Logistic Regression | Feature Importance | Business Storytelling**
 
-The analysis uses a predictive model (Logistic Regression) to extract key "Churn Drivers" and presents the results in a concise, interactive dashboard, fully ready for strategic Human Resources decision-making.
-
-## 🔗 LIVE DASHBOARD LINK
-You can access the live, interactive Looker Studio dashboard here:
-
-[IBM HR Churn Dashboard](https://lookerstudio.google.com/s/vwyerWvTjZk)
-
-## 🛠️ Methodology and Technologies
-
-The workflow was executed in three distinct phases:
-
-### 1. Data Preparation and Modeling (Python)
-* **Language:** Python 3.x
-* **Key Libraries:**
-    * `pandas`: Data cleaning, missing value imputation, and initial Feature Engineering.
-    * `scikit-learn`: Implementation of the **Logistic Regression** model for driver analysis and coefficient extraction.
-    * `sqlite3`: Used for in-memory SQL Feature Engineering to create strategic employee segments.
-
-### 2. Feature Engineering (FE)
-Strategic categorical variables were created in the Python script to enhance the descriptive analysis:
-* `Attrition_Numeric`: Binary target variable (1: Attrition, 0: No Attrition).
-* `Seniority_Category`: Categories based on `TotalWorkingYears` (Entry, Mid, Senior, Veteran Level).
-* `Monthly_Income_Level`: Income ranges for segmentation (Low, Medium, High Income).
-
-### 3. Visualization and Business Intelligence
-* **BI Tool:** **Looker Studio** (Google Data Studio)
-* **Final Design:** **Canva** (Used for the polished executive layout).
+[![Python](https://img.shields.io/badge/Python-3776AB?logo=python)](https://www.python.org/)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?logo=scikit-learn)](https://scikit-learn.org/)
+[![Pandas](https://img.shields.io/badge/Pandas-150458?logo=pandas)](https://pandas.pydata.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
-## 📈 DASHBOARD STRUCTURE
+## 📋 Overview
 
-The final dashboard is divided into two key pages, designed to answer critical business questions:
+Predictive model for employee attrition with robust feature engineering and coefficient-based driver extraction. Identifies key factors driving employee turnover to enable targeted retention interventions.
 
-### Page 1: Executive Summary & Predictive Drivers
-* **Purpose:** Answers the **"Why?"** by quantifying influence.
-* **Key Elements:**
-    * **KPIs:** Total Attrition Rate (16.12%), Total Employees, Average Years at Company.
-    * **Bar Chart:** TOP 10 Churn Drivers (Coeficientes).
-    * **Scatter Plot:** Distributes drivers by **Impact Direction** (Positive/Negative) vs. **Magnitude**.
-
-### Page 2: Descriptive Analysis and Segmentation
-* **Purpose:** Answers the **"Who and Where is the risk?"** by segmenting the population.
-* **Key Elements:**
-    * **Attrition by Tenure:** Churn rate segmented by `YearsAtCompany` (showing the critical risk peak in the 0-2 year range).
-    * **FE Segments:** Churn rates by `Monthly_Income_Level` and `Seniority_Category`.
-    * **Risk Distribution:** Analysis of churn across Department, Job Satisfaction levels, and the critical impact of `OverTime`.
+This project demonstrates end-to-end HR analytics from data exploration through model interpretation with business storytelling.
 
 ---
 
-## 💡 EXECUTIVE KEY FINDINGS
+## 💼 Business Impact
 
-The analysis highlights three critical and immediately actionable risk areas:
+- **Retention Strategy**: Identify at-risk employees before they leave
+- **Driver Analysis**: Understand root causes of attrition (coefficients)
+- **Cost Reduction**: Lower recruitment and training costs through retention
+- **HR Intelligence**: Data-driven workforce planning
 
-| Key Finding | Strategic Focus |
+---
+
+## 🛠️ Technical Stack
+
+| Category | Technologies |
 | :--- | :--- |
-| **1. Extreme Workload is Primary.** **Overtime** is the single highest predictor of attrition across the entire dataset. | **Load Management:** Immediately review Overtime policies and prioritize headcount investment in high-friction roles (e.g., Lab Technicians). |
-| **2. High Early-Career Churn.** Attrition peaks within the **first 5 years** of service and the `Entry_Level` segment. | **Retention Programs:** Fortify early-career *onboarding* and mentorship efforts for employees with under 3 years of tenure. |
-| **3. Financial & Satisfaction Gaps.** Risk is highest in the **Low Income** segment and among employees reporting minimum **Job Satisfaction** (Score 1). | **Targeted Review:** Conduct competitive salary reviews for the 'Low Income' segment and implement immediate intervention plans for employees reporting minimum satisfaction. |
+| **Data Processing** | Python, Pandas, NumPy |
+| **Feature Engineering** | Custom transformations, encoding |
+| **Machine Learning** | scikit-learn (Logistic Regression) |
+| **Visualization** | Matplotlib, Seaborn |
+| **Analysis** | Jupyter Notebooks |
 
 ---
 
-## 📂 Repository Files
+## 🏗️ Architecture
 
-| File | Description |
+```
+┌─────────────────────────────────────────────────────────────┐
+│                  HR ATTRITION ANALYTICS                      │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  DATA EXPLORATION                                           │
+│  └─→ IBM HR Analytics dataset                               │
+│      - Demographics, job roles, satisfaction, performance   │
+│                                                              │
+│  FEATURE ENGINEERING                                        │
+│  └─→ Robust transformations:                                │
+│      - Categorical encoding (One-Hot, Label)                │
+│      - Numerical scaling                                    │
+│      - Interaction features                                 │
+│                                                              │
+│  MODELING (Logistic Regression)                             │
+│  └─→ Attrition prediction, coefficient extraction           │
+│                                                              │
+│  INTERPRETATION                                             │
+│  └─→ Feature importance, business storytelling              │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 🚀 Key Features
+
+### Feature Engineering
+- **Categorical Encoding**: One-hot encoding for job roles, departments
+- **Numerical Scaling**: StandardScaler for continuous variables
+- **Interaction Features**: Combined metrics (e.g., satisfaction × performance)
+
+### Logistic Regression Model
+- **Algorithm**: Logistic Regression with L2 regularization
+- **Output**: Attrition probability (0-1)
+- **Interpretability**: Coefficient-based feature importance
+
+### Driver Analysis
+- **Coefficient Extraction**: Identify positive/negative attrition drivers
+- **Odds Ratios**: Quantify impact magnitude
+- **Business Storytelling**: Translate technical results to HR actions
+
+---
+
+## 📊 Results & Metrics
+
+| Metric | Value |
 | :--- | :--- |
-| `HR.csv` | The original source dataset used for the analysis. |
-| `hr_data_fe_ready.csv` | The final clean output from the Python script, ready for BI consumption. |
-| `hr_churn_drivers.csv` | The output from the Logistic Regression model, containing features and their coefficients. |
-| `IBM_HR_Analytics (1).pdf` | The final two-page executive dashboard report. |
-| `[python script file]` | The complete Python code for data cleaning, FE, and model training. |
+| **Model Type** | Logistic Regression (L2 regularization) |
+| **Key Drivers** | Overtime, job satisfaction, years at company |
+| **Feature Count** | 30+ engineered features |
+| **Interpretability** | Coefficient-based analysis |
 
-## 🚀 How to Reproduce the Analysis
+---
 
-1.  **Clone the Repository:** `git clone [Your Repository URL]`
-2.  **Install Dependencies:** Install the required Python libraries (`pandas`, `scikit-learn`, `numpy`).
-3.  **Run the Python Script:** Execute the script to generate the final `hr_data_fe_ready.csv` and `hr_churn_drivers.csv` files.
-4.  **Access Dashboard:** View the final product via the **Live Dashboard Link** above.
+## 📁 Project Structure
+
+```
+IBM-HR-Analytics-Employee-Attrition-Performance/
+├── data/                              # Raw and processed data
+├── notebooks/                         # Analysis notebooks
+│   ├── 01_exploratory_analysis.ipynb
+│   ├── 02_feature_engineering.ipynb
+│   └── 03_model_training.ipynb
+├── src/                               # Python scripts
+├── models/                            # Trained model files
+├── outputs/                           # Reports, visualizations
+└── README.md                          # Project documentation
+```
+
+---
+
+## 🔧 Setup & Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/Nicolenki7/IBM-HR-Analytics-Employee-Attrition-Performance.git
+cd IBM-HR-Analytics-Employee-Attrition-Performance
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run exploratory analysis
+jupyter notebook notebooks/01_exploratory_analysis.ipynb
+
+# Execute feature engineering
+jupyter notebook notebooks/02_feature_engineering.ipynb
+
+# Train model and extract drivers
+jupyter notebook notebooks/03_model_training.ipynb
+```
+
+---
+
+## 📈 Usage
+
+### Key Attrition Drivers (Coefficient Analysis)
+
+| Factor | Impact | Interpretation |
+| :--- | :--- | :--- |
+| **Overtime** | High Positive | Employees working overtime 2-3× more likely to leave |
+| **Job Satisfaction** | High Negative | Low satisfaction strongly correlates with attrition |
+| **Years at Company** | Negative | Longer tenure reduces attrition risk |
+| **Monthly Income** | Negative | Higher compensation reduces turnover |
+| **Distance from Home** | Positive | Longer commute increases attrition likelihood |
+
+### Business Recommendations
+1. **Reduce Overtime**: Review workload distribution
+2. **Improve Satisfaction**: Engagement programs, career development
+3. **Retention Bonuses**: Target high-risk employees
+4. **Flexible Work**: Remote options for long-commute employees
+
+---
+
+## 🎯 Key Learnings
+
+- **Logistic Regression** provides interpretable coefficients for HR stakeholders
+- **Feature engineering** improves model performance and insights
+- **Coefficient analysis** translates directly to business actions
+- **Business storytelling** is critical for HR analytics adoption
+
+---
+
+## 🔮 Future Enhancements
+
+- [ ] Advanced models (Random Forest, XGBoost) with SHAP analysis
+- [ ] Survival analysis for time-to-attrition prediction
+- [ ] Employee segmentation (clustering)
+- [ ] Recommendation engine for retention interventions
+- [ ] Integration with HRIS systems for real-time scoring
+
+---
+
+## 🔗 Links
+
+| Resource | URL |
+| :--- | :--- |
+| **Repository** | https://github.com/Nicolenki7/IBM-HR-Analytics-Employee-Attrition-Performance |
+| **Dataset** | [IBM HR Analytics on Kaggle](https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset) |
+
+---
+
+## 📝 Resumen en Español
+
+Modelo predictivo de attrition de empleados con feature engineering robusto y extracción de drivers basada en coeficientes.
+
+Los factores principales que impulsan el abandono son: horas extras (overtime), satisfacción laboral, y años en la compañía. El análisis de coeficientes de Regresión Logística permite traducir resultados técnicos a acciones de RRHH accionables.
+
+---
+
+## 📄 License
+
+MIT License — Feel free to fork, modify, and use for personal or commercial projects.
+
+---
+
+## 👤 Author
+
+**Nicolás Zalazar** | Senior Data Engineer & Microsoft Fabric Specialist
+
+- GitHub: [@Nicolenki7](https://github.com/Nicolenki7)
+- LinkedIn: [nicolas-zalazar-63340923a](https://www.linkedin.com/in/nicolas-zalazar-63340923a)
+- Portfolio: [nicolenki7.github.io/Portfolio](https://nicolenki7.github.io/Portfolio/)
+- Email: zalazarn046@gmail.com
+
+---
+
+*Last Updated: March 2026*
